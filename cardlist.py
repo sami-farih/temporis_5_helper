@@ -8,6 +8,7 @@ class CardList:
         assert len(set([c.id for c in cards])) == len(cards), "ids en double."
         self.cards = cards
         self.crafts = None
+        self.th = None
 
     def display(self, sort_index_=None):
         df = pd.DataFrame([[c.id, c.name, c.drop, c.img_path]
@@ -340,8 +341,7 @@ class CardList:
             clear_output(wait=True)
             display(
                 f"Méthode de drop pour (#{card.id}: {card.name}) mise à jour.")
-            global th
-            th.save()
+            self.th.save()
 
         def cancel(b):
             clear_output(wait=True)
@@ -479,8 +479,7 @@ class CardList:
             display(
                 f"Méthode de drop pour (#{card.id}: {card.name}) mise à jour.")
 
-            global th
-            th.save()
+            self.th.save()
 
         def cancel(b):
             clear_output(wait=True)

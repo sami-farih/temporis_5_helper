@@ -239,7 +239,7 @@ class CraftList:
 
         dropdown_cards = [
             widgets.Dropdown(
-                options=["-"] + self.card_set.card_names(),
+                options=["-"] + sorted(self.card_set.card_names()),
                 value="-",
                 description=f"Carte {i+1}",
                 disabled=False,
@@ -302,8 +302,7 @@ class CraftList:
                 f"Recette ajoutée. (#{obj}: {self.crafts[obj]['name']}) mis à jour."
             )
             
-            global th
-            th.save()
+            self.card_set.th.save()
 
         def cancel(b):
             clear_output(wait=True)
@@ -390,8 +389,7 @@ class CraftList:
             display(
                 f"Recette supprimée. (#{obj}: {self.crafts[obj]['name']}) mis à jour.")
             
-            global th
-            th.save()
+            self.card_set.th.save()
 
         def cancel(b):
             clear_output(wait=True)

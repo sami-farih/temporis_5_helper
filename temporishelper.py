@@ -50,11 +50,13 @@ class TemporisHelper:
                     Card(*i)
                     for i in list(zip(card_list.keys(), card_list.values()))
                 ])
+                self.cards.th = self
                 self.craft = CraftList(self.cards)
-
+                self.craft.th = self
                 self.cpt = 0
                 self.cur_time = time()
                 self.cards.crafts = self.craft
+
 
     def save(self):
         id_ = datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')
